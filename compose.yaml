@@ -1,0 +1,16 @@
+services:
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: syzenx-postgres
+    environment:
+      POSTGRES_DB: syzenx_pay_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: syzenx
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+
+volumes:
+  postgres_data:
