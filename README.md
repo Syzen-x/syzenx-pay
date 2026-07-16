@@ -1,4 +1,4 @@
-# Syzenx Pay - Wallet Transaction API 🚀
+# Syzenx Pay - Wallet Transaction API 
 
 A robust RESTful API designed to process digital wallet charges securely. This project was built following **Hexagonal Architecture (Ports and Adapters)** principles and is heavily optimized for high-concurrency environments, preventing Race Conditions and duplicate transaction charges.
 
