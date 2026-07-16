@@ -42,47 +42,6 @@ The system is strictly divided into three main layers to guarantee low coupling 
 The project includes a ready-to-use `compose.yaml` file.
 ```bash
 docker compose up -d
+```
 
 (PostgreSQL will run on port 5433 and Redis on 6379).
-
-2. Run the Application
-Bash
-mvn spring-boot:run
-(The API will be available at http://localhost:8080).
-
-📡 API Reference
-Charge a Wallet
-HTTP
-POST /api/v1/wallets/{id}/charge
-Required Headers:
-
-Content-Type: application/json
-
-Idempotency-Key: <UUID> (e.g., 550e8400-e29b-41d4-a716-446655440000)
-
-Request Body:
-
-JSON
-{
-    "amount": 25.50
-}
-Responses:
-
-200 OK: Charge successful. Returns the updated wallet balance.
-
-400 Bad Request: Business rule violation (e.g., Insufficient funds).
-
-404 Not Found: Wallet ID does not exist.
-
-409 Conflict: Duplicate transaction intercepted by Redis Idempotency layer.
-
-🧪 Testing
-The project includes pure unit tests for the Domain and Application layers, as well as exhaustive concurrency and integration tests using Testcontainers.
-
-To execute the entire test suite:
-
-Bash
-mvn test
-Note: Ensure the Docker daemon is running before executing the tests, as Testcontainers will manage the lifecycle of the test databases automatically.
-
-Author: Joel Alejandro Soto Loayza
